@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>郭氏源流 | Kwok Family History | Kwok.co</title>
+  <meta name="description" content="探索中華大姓「郭」的歷史源流。支持多種語言。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF9F6;
+      --surface: #FFFFFF;
+      --card: #FFFFFF;
+      --text: #1A1A1A;
+      --muted: #5C5C5C;
+      --accent: #FF3D6E;
+      --accent2: #00C9A7;
+      --gold: #FFB800;
+      --radius: 24px;
+      --shadow: 0 10px 40px rgba(0,0,0,0.08);
+      --shadow-hover: 0 20px 50px rgba(255,61,110,0.15);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans TC', 'Noto Sans SC', 'Outfit', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    body.lang-en, body.lang-fr, body.lang-es, body.lang-pt, body.lang-de { font-family: 'Outfit', 'Noto Sans TC', system-ui, sans-serif; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .animate { animation: fadeUp 0.8s ease-out both; }
+    .animate-delay-1 { animation-delay: 0.1s; }
+    .animate-delay-2 { animation-delay: 0.2s; }
+    .animate-delay-3 { animation-delay: 0.3s; }
+
+    header {
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      position: sticky; top: 0; z-index: 100; padding: 14px 0;
+    }
+    header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .logo {
+      font-size: 1.7rem; font-weight: 800; letter-spacing: -0.5px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .logo span { -webkit-text-fill-color: var(--text); }
+    nav a {
+      color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      margin-left: 28px; transition: color 0.25s; position: relative;
+    }
+    nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
+    nav a:hover { color: var(--accent); }
+    nav a:hover::after { width: 100%; }
+    .lang-switcher {
+      display: flex; flex-wrap: wrap; gap: 4px; background: #F0F0F0; border-radius: 999px; padding: 4px;
+    }
+    .lang-switcher button {
+      background: transparent; border: none; color: var(--muted); padding: 7px 12px;
+      border-radius: 999px; cursor: pointer; font-size: 0.8rem; font-weight: 700; transition: all 0.25s;
+    }
+    .lang-switcher button.active { background: var(--accent); color: white; box-shadow: 0 4px 12px rgba(255,61,110,0.3); }
+
+    .hero {
+      position: relative; min-height: 88vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+      background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFC 50%, #FFF8F0 100%);
+    }
+    .hero img.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.12; }
+    .hero-content { position: relative; z-index: 2; padding: 80px 20px; animation: fadeUp 1s ease-out; }
+    .hero .char {
+      font-size: clamp(6.5rem, 20vw, 13rem); font-weight: 900; line-height: 0.8;
+      background: linear-gradient(135deg, var(--accent) 0%, #FF6B9D 40%, var(--accent2) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 12px; letter-spacing: -6px; animation: float 6s ease-in-out infinite;
+    }
+    .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.6rem); font-weight: 800; margin-bottom: 16px; letter-spacing: -1.5px; }
+    .hero .subtitle { font-size: 1.25rem; color: var(--muted); font-weight: 500; }
+
+    section { padding: 100px 0; }
+    section:nth-child(even) { background: #F5F5F7; }
+    h2 { font-size: clamp(2.1rem, 4.5vw, 3rem); font-weight: 800; margin-bottom: 36px; letter-spacing: -1.2px; position: relative; display: inline-block; }
+    h2::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 70px; height: 5px; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 5px; }
+    h3 { font-size: 1.45rem; margin: 20px 0 10px; color: var(--accent); font-weight: 700; }
+    p { margin-bottom: 16px; color: var(--muted); font-size: 1.06rem; }
+    .img-full { width: 100%; border-radius: var(--radius); margin: 28px 0; box-shadow: var(--shadow); object-fit: cover; max-height: 480px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .img-full:hover { transform: scale(1.03) translateY(-6px); box-shadow: var(--shadow-hover); }
+
+    .origin-card { background: var(--card); border-radius: var(--radius); padding: 32px; margin: 20px 0; border: 1px solid rgba(0,0,0,0.05); box-shadow: var(--shadow); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .origin-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); border-color: rgba(255,61,110,0.3); }
+
+    .people-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 40px; }
+    .person { background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid rgba(0,0,0,0.04); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .person:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 25px 50px rgba(0,201,167,0.2); }
+    .person img { width: 100%; height: 240px; object-fit: cover; transition: transform 0.6s; }
+    .person:hover img { transform: scale(1.08); }
+    .person-content { padding: 24px; }
+    .person strong { color: var(--accent); display: block; font-size: 1.3rem; margin-bottom: 10px; font-weight: 700; }
+
+    footer { background: #111; color: #eee; text-align: center; padding: 70px 20px; }
+    footer a { color: var(--accent2); text-decoration: none; font-weight: 600; }
+    .hidden { display: none !important; }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hero .char { letter-spacing: -3px; }
+      section { padding: 70px 0; }
+      .lang-switcher { justify-content: center; }
+    }
+  </style>
+</head>
+<body class="lang-zh-hk">
+  <header>
+    <div class="container">
+      <div class="logo">郭<span>·</span>Kwok</div>
+      <div class="nav-wrap">
+        <nav>
+          <a href="#origin" data-i18n="nav_origin">起源</a>
+          <a href="#lineage" data-i18n="nav_lineage">源流</a>
+          <a href="#people" data-i18n="nav_people">名人</a>
+          <a href="#distribution" data-i18n="nav_dist">分佈</a>
+        </nav>
+        <div class="lang-switcher">
+          <button onclick="setLang('zh-hk')" class="active" id="btn-zh-hk">繁</button>
+          <button onclick="setLang('zh-cn')" id="btn-zh-cn">简</button>
+          <button onclick="setLang('en')" id="btn-en">EN</button>
+          <button onclick="setLang('fr')" id="btn-fr">FR</button>
+          <button onclick="setLang('es')" id="btn-es">ES</button>
+          <button onclick="setLang('pt')" id="btn-pt">PT</button>
+          <button onclick="setLang('de')" id="btn-de">DE</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <img class="hero-bg" src="images/hero-guo.jpg" alt="Kwok">
+    <div class="hero-content">
+      <div class="char">郭</div>
+      <h1 data-i18n="hero_title">源遠流長的郭姓</h1>
+      <p class="subtitle" data-i18n="hero_sub">Kwok Family History · Kwok.co</p>
+    </div>
+  </div>
+
+  <section id="meaning" class="animate">
+    <div class="container">
+      <h2 data-i18n="meaning_title">字義與讀音</h2>
+      <img class="img-full" src="images/walls.jpg" alt="城郭">
+      <img class="img-full" src="images/ritual.jpg" alt="禮器">
+      <div class="lang-zh-hk">
+        <p>「郭」字本義為<strong>外城</strong>，即古代城牆外圍再加築的一道城牆。後引申為城郭、外圍之意。</p>
+        <p>讀音因方言而異：普通話 Guō、粵語 Kwok / Gwok3。香港及海外粵語社群多以 <strong>Kwok</strong> 為姓氏拼寫。</p>
+      </div>
+      <div class="lang-zh-cn hidden">
+        <p>「郭」字本义为<strong>外城</strong>，即古代城墙外围再加筑的一道城墙。后引申为城郭、外围之意。</p>
+        <p>读音因方言而异：普通话 Guō、粤语 Kwok / Gwok3。香港及海外粤语社群多以 <strong>Kwok</strong> 为姓氏拼写。</p>
+      </div>
+      <div class="lang-en hidden">
+        <p>The character <strong>郭 (Kwok / Guō)</strong> originally means "outer city wall". It later came to signify the outer perimeter.</p>
+        <p>In Hong Kong and Cantonese communities, the surname is commonly romanised as <strong>Kwok</strong>.</p>
+      </div>
+      <div class="lang-fr hidden">
+        <p>Le caractère <strong>郭 (Kwok / Guō)</strong> signifie à l'origine « mur d'enceinte extérieur ». Il désigne plus tard le périmètre extérieur.</p>
+        <p>À Hong Kong et dans les communautés cantonnaises, le nom de famille est généralement romanisé en <strong>Kwok</strong>.</p>
+      </div>
+      <div class="lang-es hidden">
+        <p>El carácter <strong>郭 (Kwok / Guō)</strong> significa originalmente « muralla exterior de la ciudad ». Posteriormente pasó a significar el perímetro exterior.</p>
+        <p>En Hong Kong y las comunidades cantonesas, el apellido se romaniza comúnmente como <strong>Kwok</strong>.</p>
+      </div>
+      <div class="lang-pt hidden">
+        <p>O carácter <strong>郭 (Kwok / Guō)</strong> significa originalmente « muralha exterior da cidade ». Mais tarde passou a significar o perímetro exterior.</p>
+        <p>Em Hong Kong e nas comunidades cantonesas, o apelido é comummente romanizado como <strong>Kwok</strong>.</p>
+      </div>
+      <div class="lang-de hidden">
+        <p>Das Zeichen <strong>郭 (Kwok / Guō)</strong> bedeutet ursprünglich „äußere Stadtmauer“. Später bezeichnete es den äußeren Umkreis.</p>
+        <p>In Hongkong und kantonesischen Gemeinschaften wird der Familienname üblicherweise als <strong>Kwok</strong> romanisiert.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="origin" class="animate">
+    <div class="container">
+      <h2 data-i18n="origin_title">得姓起源</h2>
+      <img class="img-full" src="images/taiyuan.jpg" alt="太原堂">
+      <div class="lang-zh-hk">
+        <p>郭姓是中華古老大姓之一，起源多元，主要有以下幾支：</p>
+        <div class="origin-card"><h3>一、姬姓 · 虢國（主流）</h3><p>源於周王室宗支。周武王分封叔父虢仲於西虢、虢叔於東虢。因「虢」與「郭」古音相通，虢國後裔遂以郭為氏。太原郭氏即由此而來。</p></div>
+        <div class="origin-card"><h3>二、任姓 · 古郭國</h3><p>源於黃帝後裔。夏商時期建立古郭國，國滅後子孫以國為氏。此支歷史可追溯至四千多年前。</p></div>
+        <div class="origin-card"><h3>三、以居邑為氏</h3><p>居住於城郭附近的人，以「郭」為姓。亦有東郭、南郭等複姓，後多簡化為單姓郭。</p></div>
+        <div class="origin-card"><h3>四、其他來源</h3><p>包括少數民族改姓、賜姓等。例如後周太祖郭威本姓常，隨母改姓郭。</p></div>
+      </div>
+      <div class="lang-zh-cn hidden">
+        <p>郭姓是中华古老大姓之一，起源多元，主要有以下几支：</p>
+        <div class="origin-card"><h3>一、姬姓 · 虢国（主流）</h3><p>源于周王室宗支。周武王分封叔父虢仲于西虢、虢叔于东虢。因「虢」与「郭」古音相通，虢国后裔遂以郭为氏。太原郭氏即由此而来。</p></div>
+        <div class="origin-card"><h3>二、任姓 · 古郭国</h3><p>源于黄帝后裔。夏商时期建立古郭国，国灭后子孙以国为氏。此支历史可追溯至四千多年前。</p></div>
+        <div class="origin-card"><h3>三、以居邑为氏</h3><p>居住于城郭附近的人，以「郭」为姓。亦有东郭、南郭等复姓，后多简化为单姓郭。</p></div>
+        <div class="origin-card"><h3>四、其他来源</h3><p>包括少数民族改姓、赐姓等。例如后周太祖郭威本姓常，随母改姓郭。</p></div>
+      </div>
+      <div class="lang-en hidden">
+        <p>The Kwok surname is one of the ancient major Chinese clans with multiple origins:</p>
+        <div class="origin-card"><h3>1. Ji Surname · State of Guo (Main Line)</h3><p>Descended from the Zhou royal house. Because “虢” and “郭” were homophonous, descendants adopted 郭 as their surname. The famous Taiyuan Kwok clan originated from this branch.</p></div>
+        <div class="origin-card"><h3>2. Ren Surname · Ancient Guo State</h3><p>From descendants of the Yellow Emperor. An ancient Guo state existed during Xia and Shang. After its fall, people took the state name as surname. This line can be traced back over 4,000 years.</p></div>
+        <div class="origin-card"><h3>3. From Place of Residence</h3><p>People living near the outer city walls adopted 郭 as their surname. Compound surnames such as Dongguo later simplified to Kwok.</p></div>
+        <div class="origin-card"><h3>4. Other Origins</h3><p>Including name changes and bestowals. For example, Emperor Taizu of Later Zhou was originally surnamed Chang.</p></div>
+      </div>
+      <div class="lang-fr hidden">
+        <p>Le nom Kwok est l'un des plus anciens grands noms de famille chinois, avec plusieurs origines :</p>
+        <div class="origin-card"><h3>1. Nom Ji · État de Guo (principale)</h3><p>Issu de la maison royale Zhou. Les descendants ont adopté 郭 comme nom de famille. Le célèbre clan Taiyuan Kwok en est issu.</p></div>
+        <div class="origin-card"><h3>2. Nom Ren · Ancien État de Guo</h3><p>Issu des descendants de l'Empereur Jaune. Cet ancien État existait sous Xia et Shang. Cette lignée remonte à plus de 4 000 ans.</p></div>
+        <div class="origin-card"><h3>3. Du lieu de résidence</h3><p>Les personnes vivant près des murs extérieurs ont adopté 郭 comme nom. Des noms composés se sont simplifiés en Kwok.</p></div>
+        <div class="origin-card"><h3>4. Autres origines</h3><p>Y compris les changements de nom. Par exemple, l'empereur Taizu des Zhou postérieurs s'appelait à l'origine Chang.</p></div>
+      </div>
+      <div class="lang-es hidden">
+        <p>El apellido Kwok es uno de los antiguos grandes apellidos chinos, con múltiples orígenes:</p>
+        <div class="origin-card"><h3>1. Apellido Ji · Estado de Guo (principal)</h3><p>Descendiente de la casa real Zhou. Los descendientes adoptaron 郭 como apellido. El famoso clan Taiyuan Kwok proviene de esta rama.</p></div>
+        <div class="origin-card"><h3>2. Apellido Ren · Antiguo Estado de Guo</h3><p>De los descendientes del Emperador Amarillo. Este estado antiguo existió durante Xia y Shang. Esta línea se remonta a más de 4.000 años.</p></div>
+        <div class="origin-card"><h3>3. Del lugar de residencia</h3><p>Las personas que vivían cerca de las murallas exteriores adoptaron 郭 como apellido. Apellidos compuestos se simplificaron a Kwok.</p></div>
+        <div class="origin-card"><h3>4. Otros orígenes</h3><p>Incluyendo cambios de nombre. Por ejemplo, el emperador Taizu de los Zhou posteriores se llamaba originalmente Chang.</p></div>
+      </div>
+      <div class="lang-pt hidden">
+        <p>O apelido Kwok é um dos antigos grandes apelidos chineses, com múltiplas origens:</p>
+        <div class="origin-card"><h3>1. Apelido Ji · Estado de Guo (principal)</h3><p>Descendente da casa real Zhou. Os descendentes adotaram 郭 como apelido. O famoso clã Taiyuan Kwok origina-se desta linha.</p></div>
+        <div class="origin-card"><h3>2. Apelido Ren · Antigo Estado de Guo</h3><p>Dos descendentes do Imperador Amarelo. Este estado antigo existiu durante Xia e Shang. Esta linha remonta a mais de 4.000 anos.</p></div>
+        <div class="origin-card"><h3>3. Do local de residência</h3><p>Pessoas que viviam perto das muralhas exteriores adotaram 郭 como apelido. Apelidos compostos simplificaram-se para Kwok.</p></div>
+        <div class="origin-card"><h3>4. Outras origens</h3><p>Incluindo mudanças de nome. Por exemplo, o imperador Taizu dos Zhou posteriores chamava-se originalmente Chang.</p></div>
+      </div>
+      <div class="lang-de hidden">
+        <p>Der Nachname Kwok ist einer der alten großen chinesischen Familiennamen mit mehreren Ursprüngen:</p>
+        <div class="origin-card"><h3>1. Nachname Ji · Staat Guo (Hauptlinie)</h3><p>Abkömmling des Zhou-Königshauses. Die Nachkommen übernahmen 郭 als Nachnamen. Der berühmte Taiyuan-Kwok-Clan stammt von diesem Zweig.</p></div>
+        <div class="origin-card"><h3>2. Nachname Ren · Alter Staat Guo</h3><p>Von Nachkommen des Gelben Kaisers. Dieser alte Staat existierte während Xia und Shang. Diese Linie lässt sich über 4.000 Jahre zurückverfolgen.</p></div>
+        <div class="origin-card"><h3>3. Vom Wohnort</h3><p>Menschen, die nahe den äußeren Stadtmauern lebten, übernahmen 郭 als Nachnamen. Zusammengesetzte Namen vereinfachten sich zu Kwok.</p></div>
+        <div class="origin-card"><h3>4. Andere Ursprünge</h3><p>Einschließlich Namensänderungen. Zum Beispiel hieß Kaiser Taizu der späteren Zhou ursprünglich Chang.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lineage" class="animate">
+    <div class="container">
+      <h2 data-i18n="lineage_title">郡望與堂號</h2>
+      <img class="img-full" src="images/heritage.jpg" alt="家族傳承">
+      <img class="img-full" src="images/genealogy.jpg" alt="族譜">
+      <div class="lang-zh-hk">
+        <p>郭姓最主要的郡望是<strong>太原</strong>。史有「天下郭氏出太原」之說。唐代汾陽王郭子儀即太原郭氏衍派，海外郭氏多認此支。</p>
+        <p>常見堂號：<strong>太原堂</strong>、<strong>汾陽堂</strong>等。</p>
+      </div>
+      <div class="lang-zh-cn hidden">
+        <p>郭姓最主要的郡望是<strong>太原</strong>。史有「天下郭氏出太原」之说。唐代汾阳王郭子仪即太原郭氏衍派，海外郭氏多认此支。</p>
+        <p>常见堂号：<strong>太原堂</strong>、<strong>汾阳堂</strong>等。</p>
+      </div>
+      <div class="lang-en hidden">
+        <p>The principal ancestral seat of the Kwok clan is <strong>Taiyuan</strong>. There is a saying: “All Kwok under heaven come from Taiyuan.” Many overseas Kwoks claim descent from the Taiyuan line, including the famous Tang general Guo Ziyi.</p>
+        <p>Common hall names: <strong>Taiyuan Hall</strong>, <strong>Fenyang Hall</strong>.</p>
+      </div>
+      <div class="lang-fr hidden">
+        <p>Le siège ancestral principal du clan Kwok est <strong>Taiyuan</strong>. On dit : « Tous les Kwok sous le ciel viennent de Taiyuan. » De nombreux Kwok d'outre-mer revendiquent cette lignée, dont le célèbre général Tang Guo Ziyi.</p>
+        <p>Noms de halls courants : <strong>Hall Taiyuan</strong>, <strong>Hall Fenyang</strong>.</p>
+      </div>
+      <div class="lang-es hidden">
+        <p>El asiento ancestral principal del clan Kwok es <strong>Taiyuan</strong>. Se dice: « Todos los Kwok bajo el cielo vienen de Taiyuan. » Muchos Kwok en el extranjero reclaman esta línea, incluido el famoso general Tang Guo Ziyi.</p>
+        <p>Nombres de salas comunes: <strong>Sala Taiyuan</strong>, <strong>Sala Fenyang</strong>.</p>
+      </div>
+      <div class="lang-pt hidden">
+        <p>O assento ancestral principal do clã Kwok é <strong>Taiyuan</strong>. Diz-se: « Todos os Kwok sob o céu vêm de Taiyuan. » Muitos Kwok no estrangeiro reivindicam esta linha, incluindo o famoso general Tang Guo Ziyi.</p>
+        <p>Nomes de salões comuns: <strong>Salão Taiyuan</strong>, <strong>Salão Fenyang</strong>.</p>
+      </div>
+      <div class="lang-de hidden">
+        <p>Der wichtigste Ahnenort des Kwok-Clans ist <strong>Taiyuan</strong>. Man sagt: „Alle Kwok unter dem Himmel stammen aus Taiyuan.“ Viele überseeische Kwok beanspruchen diese Linie, darunter der berühmte Tang-General Guo Ziyi.</p>
+        <p>Häufige Hallennamen: <strong>Taiyuan-Halle</strong>, <strong>Fenyang-Halle</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="people" class="animate">
+    <div class="container">
+      <h2 data-i18n="people_title">歷史名人</h2>
+      <img class="img-full" src="images/calligraphy.jpg" alt="書法">
+      <div class="people-grid">
+        <div class="person">
+          <img src="images/guo-ziyi.jpg" alt="郭子儀">
+          <div class="person-content">
+            <strong>郭子儀</strong>
+            <div class="lang-zh-hk"><p>唐代名將，平定安史之亂，封汾陽郡王。後世尊為郭氏最具凝聚力的祖先之一。</p></div>
+            <div class="lang-zh-cn hidden"><p>唐代名将，平定安史之乱，封汾阳郡王。后世尊为郭氏最具凝聚力的祖先之一。</p></div>
+            <div class="lang-en hidden"><p>Tang dynasty general who suppressed the An Lushan Rebellion. Enfeoffed as Prince of Fenyang. Revered as one of the most unifying ancestors of the Kwok clan.</p></div>
+            <div class="lang-fr hidden"><p>Général de la dynastie Tang qui a réprimé la rébellion d'An Lushan. Anobli prince de Fenyang. Vénéré comme l'un des ancêtres les plus unificateurs du clan Kwok.</p></div>
+            <div class="lang-es hidden"><p>General de la dinastía Tang que reprimió la rebelión de An Lushan. Ennoblecido como Príncipe de Fenyang. Reverenciado como uno de los ancestros más unificadores del clan Kwok.</p></div>
+            <div class="lang-pt hidden"><p>General da dinastia Tang que suprimiu a rebelião de An Lushan. Enfeudado como Príncipe de Fenyang. Reverenciado como um dos ancestrais mais unificadores do clã Kwok.</p></div>
+            <div class="lang-de hidden"><p>General der Tang-Dynastie, der die An-Lushan-Rebellion niederschlug. Als Prinz von Fenyang belehnt. Verehrt als einer der einigendsten Ahnen des Kwok-Clans.</p></div>
+          </div>
+        </div>
+        <div class="person">
+          <img src="images/guo-shoujing.jpg" alt="郭守敬">
+          <div class="person-content">
+            <strong>郭守敬</strong>
+            <div class="lang-zh-hk"><p>元代天文學家、水利家。主持制定《授時曆》，精準度極高，通行三百餘年。</p></div>
+            <div class="lang-zh-cn hidden"><p>元代天文学家、水利家。主持制定《授时历》，精准度极高，通行三百余年。</p></div>
+            <div class="lang-en hidden"><p>Yuan dynasty astronomer and hydraulic engineer. Created the highly accurate Shoushi Calendar, used for over 300 years.</p></div>
+            <div class="lang-fr hidden"><p>Astronome et ingénieur hydraulique de la dynastie Yuan. Créa le calendrier Shoushi très précis, utilisé pendant plus de 300 ans.</p></div>
+            <div class="lang-es hidden"><p>Astrónomo e ingeniero hidráulico de la dinastía Yuan. Creó el calendario Shoushi de alta precisión, usado durante más de 300 años.</p></div>
+            <div class="lang-pt hidden"><p>Astrónomo e engenheiro hidráulico da dinastia Yuan. Criou o calendário Shoushi de alta precisão, usado por mais de 300 anos.</p></div>
+            <div class="lang-de hidden"><p>Astronom und Wasserbauingenieur der Yuan-Dynastie. Erstellte den hochpräzisen Shoushi-Kalender, der über 300 Jahre lang verwendet wurde.</p></div>
+          </div>
+        </div>
+        <div class="person">
+          <div class="person-content" style="padding-top: 48px;">
+            <strong>郭鶴年 / Robert Kuok</strong>
+            <div class="lang-zh-hk"><p>馬來西亞華商，被譽為「亞洲糖王」。創立香格里拉酒店集團等企業。</p></div>
+            <div class="lang-zh-cn hidden"><p>马来西亚华商，被誉为「亚洲糖王」。创立香格里拉酒店集团等企业。</p></div>
+            <div class="lang-en hidden"><p>Malaysian Chinese entrepreneur known as the “Sugar King of Asia”. Founder of the Shangri-La Hotels group.</p></div>
+            <div class="lang-fr hidden"><p>Entrepreneur sino-malaisien connu sous le nom de « Roi du Sucre d'Asie ». Fondateur du groupe Shangri-La Hotels.</p></div>
+            <div class="lang-es hidden"><p>Empresario chino-malasio conocido como el « Rey del Azúcar de Asia ». Fundador del grupo Shangri-La Hotels.</p></div>
+            <div class="lang-pt hidden"><p>Empresário sino-malaio conhecido como o « Rei do Açúcar da Ásia ». Fundador do grupo Shangri-La Hotels.</p></div>
+            <div class="lang-de hidden"><p>Malaysisch-chinesischer Unternehmer, bekannt als „Zuckerkönig Asiens“. Gründer der Shangri-La Hotels Gruppe.</p></div>
+          </div>
+        </div>
+        <div class="person">
+          <div class="person-content" style="padding-top: 48px;">
+            <strong>郭炳湘 / Walter Kwok</strong>
+            <div class="lang-zh-hk"><p>香港企業家，新鴻基地產創辦人郭得勝長子。曾與兄弟共同執掌新鴻基。</p></div>
+            <div class="lang-zh-cn hidden"><p>香港企业家，新鸿基地产创办人郭得胜长子。曾与兄弟共同执掌新鸿基。</p></div>
+            <div class="lang-en hidden"><p>Hong Kong entrepreneur, eldest son of Kwok Tak-seng, co-founder of Sun Hung Kai Properties.</p></div>
+            <div class="lang-fr hidden"><p>Entrepreneur de Hong Kong, fils aîné de Kwok Tak-seng, cofondateur de Sun Hung Kai Properties.</p></div>
+            <div class="lang-es hidden"><p>Empresario de Hong Kong, hijo mayor de Kwok Tak-seng, cofundador de Sun Hung Kai Properties.</p></div>
+            <div class="lang-pt hidden"><p>Empresário de Hong Kong, filho mais velho de Kwok Tak-seng, cofundador da Sun Hung Kai Properties.</p></div>
+            <div class="lang-de hidden"><p>Hongkonger Unternehmer, ältester Sohn von Kwok Tak-seng, Mitbegründer von Sun Hung Kai Properties.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="distribution" class="animate">
+    <div class="container">
+      <h2 data-i18n="dist_title">人口與分佈</h2>
+      <img class="img-full" src="images/diaspora.jpg" alt="海外郭氏">
+      <img class="img-full" src="images/tree.jpg" alt="家族之樹">
+      <img class="img-full" src="images/family.jpg" alt="現代家庭">
+      <div class="lang-zh-hk">
+        <p>郭姓是中國當代第十六至十八大姓之一，總人口約一千五百萬。主要集中於河南、河北、山東、廣東等地。在香港，Kwok 是常見大姓。</p>
+        <p>海外方面，東南亞、北美、澳洲等地均有大量郭氏後裔。</p>
+      </div>
+      <div class="lang-zh-cn hidden">
+        <p>郭姓是中国当代第十六至十八大姓之一，总人口约一千五百万。主要集中于河南、河北、山东、广东等地。在香港，Kwok 是常见大姓。</p>
+        <p>海外方面，东南亚、北美、澳洲等地均有大量郭氏后裔。</p>
+      </div>
+      <div class="lang-en hidden">
+        <p>The Kwok surname ranks among the 16th–18th most common surnames in contemporary China, with around 15 million people. It is concentrated in Henan, Hebei, Shandong and Guangdong. In Hong Kong, Kwok is a common surname.</p>
+        <p>Large numbers of descendants live in Southeast Asia, North America, Australia and other parts of the Chinese diaspora.</p>
+      </div>
+      <div class="lang-fr hidden">
+        <p>Le nom Kwok se classe parmi les 16e à 18e noms de famille les plus courants en Chine contemporaine, avec environ 15 millions de personnes. Il est concentré dans le Henan, le Hebei, le Shandong et le Guangdong. À Hong Kong, Kwok est un nom courant.</p>
+        <p>De nombreux descendants vivent en Asie du Sud-Est, en Amérique du Nord, en Australie et dans d'autres parties de la diaspora chinoise.</p>
+      </div>
+      <div class="lang-es hidden">
+        <p>El apellido Kwok se encuentra entre los 16º y 18º apellidos más comunes en la China contemporánea, con alrededor de 15 millones de personas. Se concentra en Henan, Hebei, Shandong y Guangdong. En Hong Kong, Kwok es un apellido común.</p>
+        <p>Gran número de descendientes viven en el Sudeste Asiático, Norteamérica, Australia y otras partes de la diáspora china.</p>
+      </div>
+      <div class="lang-pt hidden">
+        <p>O apelido Kwok está entre os 16.º e 18.º apelidos mais comuns na China contemporânea, com cerca de 15 milhões de pessoas. Concentra-se em Henan, Hebei, Shandong e Guangdong. Em Hong Kong, Kwok é um apelido comum.</p>
+        <p>Grande número de descendentes vive no Sudeste Asiático, América do Norte, Austrália e outras partes da diáspora chinesa.</p>
+      </div>
+      <div class="lang-de hidden">
+        <p>Der Nachname Kwok gehört zu den 16. bis 18. häufigsten Nachnamen im heutigen China, mit rund 15 Millionen Menschen. Er konzentriert sich auf Henan, Hebei, Shandong und Guangdong. In Hongkong ist Kwok ein häufiger Nachname.</p>
+        <p>Viele Nachkommen leben in Südostasien, Nordamerika, Australien und anderen Teilen der chinesischen Diaspora.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>郭氏源流 · Kwok Family History</p>
+    <p style="margin-top: 12px;"><a href="https://kwok.co">Kwok.co</a> · <span data-i18n="footer_tag">追根溯源，不忘本來</span></p>
+    <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.7;" data-i18n="footer_note">內容根據公開史籍及姓氏研究整理，僅供文化參考。</p>
+  </footer>
+
+  <script>
+    const i18n = {
+      'zh-hk': {
+        nav_origin: '起源', nav_lineage: '源流', nav_people: '名人', nav_dist: '分佈',
+        hero_title: '源遠流長的郭姓', hero_sub: 'Kwok Family History · Kwok.co',
+        meaning_title: '字義與讀音', origin_title: '得姓起源', lineage_title: '郡望與堂號',
+        people_title: '歷史名人', dist_title: '人口與分佈',
+        footer_tag: '追根溯源，不忘本來', footer_note: '內容根據公開史籍及姓氏研究整理，僅供文化參考。'
+      },
+      'zh-cn': {
+        nav_origin: '起源', nav_lineage: '源流', nav_people: '名人', nav_dist: '分布',
+        hero_title: '源远流长的郭姓', hero_sub: 'Kwok Family History · Kwok.co',
+        meaning_title: '字义与读音', origin_title: '得姓起源', lineage_title: '郡望与堂号',
+        people_title: '历史名人', dist_title: '人口与分布',
+        footer_tag: '追根溯源，不忘本来', footer_note: '内容根据公开史籍及姓氏研究整理，仅供文化参考。'
+      },
+      'en': {
+        nav_origin: 'Origins', nav_lineage: 'Lineage', nav_people: 'Figures', nav_dist: 'Distribution',
+        hero_title: 'The Enduring Kwok Surname', hero_sub: 'Kwok Family History · Kwok.co',
+        meaning_title: 'Meaning & Pronunciation', origin_title: 'Origins of the Surname', lineage_title: 'Ancestral Seats & Hall Names',
+        people_title: 'Historical Figures', dist_title: 'Population & Distribution',
+        footer_tag: 'Tracing the roots, remembering the source', footer_note: 'Content compiled from public historical records and surname research for cultural reference only.'
+      },
+      'fr': {
+        nav_origin: 'Origines', nav_lineage: 'Lignée', nav_people: 'Personnages', nav_dist: 'Répartition',
+        hero_title: 'Le nom Kwok, une histoire millénaire', hero_sub: 'Histoire de la famille Kwok · Kwok.co',
+        meaning_title: 'Signification et prononciation', origin_title: 'Origines du nom', lineage_title: 'Sièges ancestraux',
+        people_title: 'Personnages historiques', dist_title: 'Population et répartition',
+        footer_tag: 'Retrouver ses racines', footer_note: 'Contenu compilé à partir de sources historiques publiques à des fins culturelles uniquement.'
+      },
+      'es': {
+        nav_origin: 'Orígenes', nav_lineage: 'Linaje', nav_people: 'Figuras', nav_dist: 'Distribución',
+        hero_title: 'El apellido Kwok, una historia milenaria', hero_sub: 'Historia de la familia Kwok · Kwok.co',
+        meaning_title: 'Significado y pronunciación', origin_title: 'Orígenes del apellido', lineage_title: 'Asientos ancestrales',
+        people_title: 'Figuras históricas', dist_title: 'Población y distribución',
+        footer_tag: 'Rastreando las raíces', footer_note: 'Contenido recopilado de registros históricos públicos solo con fines culturales.'
+      },
+      'pt': {
+        nav_origin: 'Origens', nav_lineage: 'Linhagem', nav_people: 'Figuras', nav_dist: 'Distribuição',
+        hero_title: 'O apelido Kwok, uma história milenar', hero_sub: 'História da família Kwok · Kwok.co',
+        meaning_title: 'Significado e pronúncia', origin_title: 'Origens do apelido', lineage_title: 'Assentos ancestrais',
+        people_title: 'Figuras históricas', dist_title: 'População e distribuição',
+        footer_tag: 'Rastreando as raízes', footer_note: 'Conteúdo compilado a partir de registos históricos públicos apenas para referência cultural.'
+      },
+      'de': {
+        nav_origin: 'Ursprünge', nav_lineage: 'Linie', nav_people: 'Persönlichkeiten', nav_dist: 'Verteilung',
+        hero_title: 'Der Nachname Kwok, eine jahrtausendealte Geschichte', hero_sub: 'Geschichte der Familie Kwok · Kwok.co',
+        meaning_title: 'Bedeutung und Aussprache', origin_title: 'Ursprünge des Nachnamens', lineage_title: 'Ahnenorte',
+        people_title: 'Historische Persönlichkeiten', dist_title: 'Bevölkerung und Verteilung',
+        footer_tag: 'Die Wurzeln verfolgen', footer_note: 'Inhalt aus öffentlichen historischen Aufzeichnungen zusammengestellt, nur für kulturelle Zwecke.'
+      }
+    };
+
+    function setLang(lang) {
+      document.body.className = 'lang-' + lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang] && i18n[lang][key]) el.textContent = i18n[lang][key];
+      });
+      document.querySelectorAll('.lang-zh-hk, .lang-zh-cn, .lang-en, .lang-fr, .lang-es, .lang-pt, .lang-de').forEach(el => {
+        el.classList.add('hidden');
+      });
+      document.querySelectorAll('.lang-' + lang).forEach(el => {
+        el.classList.remove('hidden');
+      });
+      document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('btn-' + lang).classList.add('active');
+      document.documentElement.lang = lang === 'zh-hk' ? 'zh-HK' : lang === 'zh-cn' ? 'zh-CN' : lang;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.style.animationPlayState = 'running';
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+
+    setLang('zh-hk');
+  </script>
+</body>
+</html>
